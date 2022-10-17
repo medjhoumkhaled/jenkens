@@ -3,14 +3,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Docker-deplay') {
             steps {
-                echo 'Hello World'
-            }
-        }
-        stage('Hello from file') {
-            steps {
-                sh 'echo "hello from git file"> /tmp/githellotest'
+                sh 'docker run --name mynginx -p 80:80 -d nginx'
             }
         }
     }
