@@ -1,4 +1,4 @@
-currentBuild.displayName = "First-pipline#" + currentBuild.number
+currentBuild.displayName = "First-git-pipline#" + currentBuild.number 
 pipeline {
     agent any
 
