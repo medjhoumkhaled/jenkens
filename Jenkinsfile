@@ -17,7 +17,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'khaledvbPWD', variable: 'dockerHubPwd')]) {
                     sh 'docker login -u khaledvb -p ${dockerHubPwd}'
-                    sh 'docker push nginx:latest khaledvb/ng:latest'
+                    sh 'docker push khaledvb/ng:latest'
                 }
             }
         }
