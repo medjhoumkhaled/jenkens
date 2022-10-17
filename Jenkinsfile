@@ -10,8 +10,7 @@ pipeline {
         }
         stage('Hello from file') {
             steps {
-                sh '''echo "hello from file"> /tmp/hellotest
-                      cat /tmp/hellotest'''
+                sh 'echo "hello from git file"> /tmp/githellotest'
             }
         }
     }
