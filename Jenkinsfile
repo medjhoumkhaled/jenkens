@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Docker-deplay') {
             steps {
-                sh 'docker run --name mynginx -p 80:80 -d nginx'
+                sh 'docker run --name mynginx -p 88:80 -d nginx'
             }
         }
     }
