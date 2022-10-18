@@ -6,6 +6,11 @@ pipeline {
     }
 
     stages {
+        stage('Data settings'){
+            steps {
+                sh 'sed "s/VERSION/${DOCKER_TAG}/g" -i index.html'
+            }
+        }
 
         stage('Docker-build'){
             steps {
