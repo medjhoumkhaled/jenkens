@@ -22,9 +22,15 @@ pipeline {
             }
         }
 
+        stage('Docker-clean') {
+            steps {
+                sh 'docker rm -f ngcontainer '
+            }
+        }
+
         stage('Docker-deplay') {
             steps {
-                sh 'docker run --name ng${DOCKER_TAG} -p 88:82 -d khaledvb/ng:${DOCKER_TAG}'
+                sh 'docker run --name ngcontainer -p 88:80 -d khaledvb/ng:${DOCKER_TAG}'
             }
         }
     }
