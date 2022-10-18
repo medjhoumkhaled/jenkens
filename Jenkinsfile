@@ -3,22 +3,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Docker-deplay') {
+
+        stage('Docker-build'){
             steps {
-                sh 'docker run --name mynginx -p 88:80 -d nginx'
+                sh 'docker build . -t khaledvb/ng:latest'
             }
         }
-        stage('Docker-tag') {
-            steps {
-                sh 'docker tag nginx:latest khaledvb/ng:latest'
-            }
-        }
+
         stage('Docker-push') {
             steps {
-                withCredentials([string(credentialsId: 'khaledvbPWD', variable: 'dockerHubPwd')]) {
+                withCredentials([string(credentialsId: 'khaledvbPWD', variable: '>
                     sh 'docker login -u khaledvb -p ${dockerHubPwd}'
                     sh 'docker push khaledvb/ng:latest'
                 }
+            }
+        }
+
+        stage('Docker-deplay') {
+            steps {
+                sh 'docker run --name mynginx -p 88:82 -d khaledvb/ng:latest'
             }
         }
     }
