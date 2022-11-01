@@ -43,7 +43,7 @@ pipeline {
         }
         
         stage('Deploy in local webserver'){
-            step {
+            steps {
                 sh 'cp jktest.html /var/www/html/cloutik/'
             }
         }
