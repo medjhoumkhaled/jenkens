@@ -9,7 +9,8 @@ pipeline {
         stage('Data settings'){
             steps {
                 sh 'chmod +x updateIndexVersion.sh'
-                sh './updateIndexVersion.sh ${DOCKER_TAG}'
+                sh './updateIndexVersion.sh ${DOCKER_TAG} index.html'
+                sh './updateIndexVersion.sh ${DOCKER_TAG} jktest.html'
 
             }
         }
@@ -35,9 +36,15 @@ pipeline {
             }
         }
 
-        stage('Docker-deplay') {
+        stage('Docker-deploy') {
             steps {
                 sh 'docker run --name ngcontainer -p 88:80 -d khaledvb/ng:${DOCKER_TAG}'
+            }
+        }
+        
+        stage('Deploy in local webserver'){
+            step {
+                sh 'cp jktest.html /var/www/html/cloutik/'
             }
         }
     }
