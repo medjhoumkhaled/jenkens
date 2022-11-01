@@ -18,7 +18,7 @@ pipeline {
         stage('Deploy in remote eu webserver'){
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'com-server', keyFileVariable: 'EU_prevatefile')]) {
-                    sh 'scp -i ${EU_prevatefile} jktest.html root@login.cloutik.eu:/root/'
+                    sh 'scp -oStrictHostKeyChecking=no -i ${EU_prevatefile} jktest.html root@login.cloutik.eu:/root/'
                 }
                 
                 
@@ -62,7 +62,7 @@ pipeline {
         stage('Deploy in remote webserver'){
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'com-server', keyFileVariable: 'EU_prevatefile')]) {
-                    sh 'scp -i ${EU_prevatefile} jktest.html root@login.cloutik.eu:/root/'
+                    sh 'scp -oStrictHostKeyChecking=no -i ${EU_prevatefile} jktest.html root@login.cloutik.eu:/root/'
                 }
                 
                 
