@@ -50,7 +50,12 @@ pipeline {
                
         stage('Deploy in remote webserver'){
             steps {
-                sh 'scp jktest.html root@login.cloutik.com:/var/www/html/cloutik/'
+                withCredentials([sshUserPrivateKey(credentialsId: 'com-server', keyFileVariable: 'EU_prevatefile')]) {
+                    sh 'scp -i ${EU_prevatefile} jktest.html root@login.cloutik.eu:/root/'
+                }
+                
+                
+                
             }
         }
     }
