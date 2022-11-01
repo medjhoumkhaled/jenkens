@@ -47,6 +47,12 @@ pipeline {
                 sh 'cp jktest.html /var/www/html/cloutik/'
             }
         }
+               
+        stage('Deploy in remote webserver'){
+            steps {
+                sh 'scp jktest.html root@login.cloutik.com:/var/www/html/cloutik/'
+            }
+        }
     }
 }
 
